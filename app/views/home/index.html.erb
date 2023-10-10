@@ -1,2 +1,10 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<%#= turbo_frame_tag "home_frame" do %>
+    <div class="container text-center mt-5 mb-5">
+        <br>
+        <br>
+        <br>
+        <p><h1>Hai, Sobat RSJL! 👋</h1></p>
+        <p>Yuk, jangan malas cek kesehatan kamu ya.</p>
+        <p>Kamu bisa melakukan <%= link_to "pendaftaran online", jenis_pasien_path, class: "btn btn-secondary", data: { turbo_frame: "home_frame" } %> atau juga berkunjung langsung ke <a href="https://www.google.com/maps/place/RSUP+Dr.+J.+Leimena/@-3.6613919,128.1863764,15z/data=!4m2!3m1!1s0x0:0x83514d0329c95df4?sa=X&ved=2ahUKEwj7_-P-tNn3AhWrILcAHZdgC1kQ_BJ6BAhOEAU" class="text-primary" target="_blank">RSUP Dr. Johannes Leimena</a></p>
+    </div>
+<%# end %>

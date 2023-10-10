@@ -2,6 +2,7 @@ require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
+  config.hosts << "590f-36-94-66-242.ngrok-free.app"
 
   # In the development environment your application's code is reloaded any time
   # it changes. This slows down response time but is perfect for development
@@ -70,6 +71,13 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+
+#   config.force_ssl = true
+# #   config.force_ssl = true
+# # config.ssl_options = {hsts: false}
+#   config.ssl_cert = Rails.root.join('localhost.crt').to_s
+#   config.ssl_key = Rails.root.join('localhost.key').to_s
+  
 
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true

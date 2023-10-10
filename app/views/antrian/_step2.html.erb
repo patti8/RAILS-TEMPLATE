@@ -1,0 +1,63 @@
+<div class="mx-auto" style="width: 50%;">
+
+    <%= form_with(url: "/check_step_two", method: :post) do |d| %>
+
+
+        <div class="mb-3">
+            <%= d.hidden_field :jenis_pasien, class: "form-control", value: session['jenis'], required: true, readonly: true %>
+        </div>
+
+        <div class="mb-3">
+            <%= d.text_field :norm, class: "form-control", value: session['norm'], required: true, readonly: true %>
+        </div>
+
+        <div class="mb-3">
+            <%= d.text_field :nama, class: "form-control", value: session['nama'], required: true, readonly: true %>
+        </div>
+
+        <div class="mb-3">
+            <%= d.text_field :tempat_lahir, class: "form-control", value: session['tempat_lahir'], required: true, readonly: true %>
+        </div>
+
+        <div class="mb-3">
+            <%= d.text_field :tanggal_lahir, class: "form-control", value: session['tanggal_lahir'], required: true, readonly: true %>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Kontak Pasien <small class="text-danger">*</small></label>
+            <%= d.text_field :kontak, class: "form-control", placeholder: "Kontak Pasien", required: true %>
+        </div>
+
+        <div data-controller="schedule">
+
+            <div class="mb-3">
+                <%= d.select(:cara_bayar, carabayar_select, {prompt: "-- Pilih Cara Bayar --"}, {class: "form-select"})%>
+            </div>
+
+            <div class="mb-3">
+                <%= d.select(:poli, ruanganrj_select, {prompt: "-- Pilih Poli --"}, {class: "form-select", data: {action: "change->schedule#poli"} })%>
+            </div>
+
+             <div class="mb-3">
+                <label class="form-label">Dokter Spesialis <small class="text-danger">*</small></label>
+                <%= d.select :dokter, [], {}, {:include_blank => 'name of your blank prompt', class: "form-select", data: { schedule_target: "stateSelect", action:  "click->schedule#jadwal_poli"} } %>
+            </div>
+            
+            <div class="mb-3">
+                <label class="form-label">Tanggal Kunjungan <small class="text-danger">*</small></label>
+                <%= d.select :tanggal_kunjungan, [], {}, { class: "form-select", data: { schedule_target: "tglkunjunganSelect"} }%>
+            </div>
+
+
+        </div>
+
+
+
+        <center>
+            <%= link_to "Sebelumnya", batal_kunjungan_path, method: :post, class: "btn btn-primary" %>
+            <%= d.submit "Berikutnya", class: "btn btn-secondary" %>
+        </center>
+    <% end %>
+    
+</div>
+

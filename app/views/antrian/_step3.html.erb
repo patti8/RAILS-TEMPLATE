@@ -1,0 +1,63 @@
+<div class="mx-auto" style="width: 50%;">
+
+<div class="card shadow">
+    <div class="card-header">Apakah data kamu sudah sesuai?</div>
+    <div class="body">
+        <table class="table">
+            <tbody>
+                <tr>
+                    <td><b>JENIS</b></td>
+                    <td><%=  jenis_pasien(session['destination_jenis_pasien'].to_i) %></td>
+                </tr>
+                <tr>
+                    <td><b>NORM</b></td>
+                    <td><%= session['destination_norm'] %></td>
+                </tr>
+                <tr>
+                    <td><b>NAMA</b></td>
+                     <td><%= session['destination_nama'] %></td>
+                </tr>
+                <tr>
+                    <td><b>TEMPAT LAHIR</b></td>
+                    <td><%= session['destination_tempat_lahir'] %></td>
+                </tr>
+                <tr>
+                    <td><b>TANGGAL LAHIR</b></td>
+                     <td><%= session['destination_tanggal_lahir'] %></td>
+                </tr>
+                <tr>
+                    <td><b>KONTAK</b></td>
+                     <td><%= session['destination_kontak'] %></td>
+                </tr>
+                <tr>
+                    <td><b>CARA BAYAR</b></td>
+                    <td><%= cara_bayar(session['destination_cara_bayar']).DESKRIPSI %></td>
+                </tr>
+                <tr>
+                    <td><b>POLI</b></td>
+                    <td><%= referensi_ruangan(session['destination_poli']).DESKRIPSI %></td>
+                </tr>
+                <tr>
+                    <td><b>DOKTER</b></td>
+                    <td><%= referensi_dokter_hfis(session['destination_dokter']).NM_DOKTER %>. <%#= master_pegawai(session['destination_dokter']).NAMA %></td>
+                </tr>
+                <tr>
+                    <td><b>TANGGAL KUNJUNGAN</b></td>
+                    <td><%= session['destination_tanggal_kunjungan'] %></td>
+                </tr>
+                
+            </tbody>
+        </table>
+    </div>
+
+    <div class="card-footer">
+        <%= form_with(url: "/check_step_three", method: :post) do |d| %>
+            <center>
+                <%= link_to "Batal", batal_kunjungan_path, method: :post, class: "btn btn-danger" %>
+                <%= d.submit "Daftar", class: "btn btn-primary",target: "_blank",  data: { turbo: false}  %>
+            </center>
+        <% end %>
+    </div>
+</div>
+    
+</div>

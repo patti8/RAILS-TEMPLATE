@@ -1,0 +1,31 @@
+
+<%# <div class="container mt-5 mb-5 d-flex justify-content-center"> %>
+    
+
+
+
+    <div class="card">
+        <div class="card-header text-center">Silahkan melakukan checkin disni</div>
+        <div class="card-body">
+            <% if notice.present? %>
+                <div class="alert text-center alert-<%= alert %>" role="alert">
+                    <%= notice %>
+                </div>
+            <% end %>
+            <div class="text-center">
+                <video id="video" width="400" height="400"></video>
+            </div>
+
+            <label>Result:</label>
+            <pre><code id="result"></code></pre>
+            <%= link_to "checkin", root_path %>
+        </div>
+    </div>
+
+  </div>
+
+  <div id="reader" width="600px"></div>
+
+
+<script src="https://unpkg.com/html5-qrcode" type="text/javascript">
+<%= javascript_pack_tag("checkin-qrcode") %>

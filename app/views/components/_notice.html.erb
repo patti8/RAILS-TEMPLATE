@@ -1,0 +1,5 @@
+<% if notice.present? %>
+    <div class="alert text-center alert-<%= css if css.present? %>" role="alert">
+        <%= notice %>
+    </div>
+<% end %>

@@ -1,0 +1,17 @@
+<div class="card">
+                <div class="card-header text-center">Silahkan melakukan checkin disni</div>
+                <div class="card-body">
+                    <% if notice.present? %>
+                        <div class="alert text-center alert-<%= alert %>" role="alert">
+                            <%= notice %>
+                        </div>
+                    <% end %>
+                    <div class="text-center">
+                        <video id="video" width="100%" height="400"></video>
+                    </div>
+
+                    <label>Result:</label>
+                    <pre><code id="result"></code></pre>
+                    
+                </div>
+            </div>

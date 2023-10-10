@@ -1,0 +1,26 @@
+<turbo-frame id="jenis_frame">
+  <div class="container mt-5 mb-5">
+    <% if notice.present? %>
+        <div class="alert text-center alert-<%= alert %>" role="alert">
+            <%= notice %>
+        </div>
+    <% end %>
+      
+      
+      <%= render "/components/steps" %>
+
+      <% if !@patient.present? && !@destination.present? && @pasien_baru != 112208 %>
+          <%= render "step1" %>
+      <% end %>
+
+      <% if @patient.present? || @pasien_baru == 112208 %>
+          <%= render "step2" %>
+      <% end %>
+
+      <% if @destination.present? %>
+          <%= render "step3" %>
+      <% end %>
+
+  </div>
+
+</div>

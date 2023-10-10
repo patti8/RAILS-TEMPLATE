@@ -1,0 +1,74 @@
+<turbo-frame id="jenis_pasien">
+    
+    <!-- import jquery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <!--Modal JS Script -->
+    <script type="text/javascript">
+        window.onload = () => {
+            $('#onload').modal('show');
+        }
+    </script>
+
+    <div class="modal fade" id="onload" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> <!-- Add this line to your code -->
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Yeay, Kamu berhasil mendaftar! 🎉</h5>
+                </div>
+                <div class="modal-body">
+                    Silahkan <%= link_to "Download", cetak_bukti_path(:format => 'pdf'), target: :_blank, class: "btn btn-primary" %> bukti cetak. 
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div> 
+
+    <div class=" d-block d-sm-none justify-content-center">
+        <header class="d-flex bg-1  py-3">
+            <%= render_qr_code("https://www.google.com/") %>
+        </header>
+    </div>
+
+    <div class="container d-flex justify-content-center mt-3">
+        <div class="card shadow" style="width: 75%;">
+            
+            <div class="bg-1 d-none d-sm-block card-header text-center text-bold text-white">
+                <%= image_tag("rsjl-light.png", width: 350) %> 
+            </div>
+            
+            <div class="card-body text-center">
+                <h5 class="card-title">Bukti Pendaftaran Online</h5>
+                
+                <br>
+                <figure class="text-center">
+                    <blockquote class="blockquote">
+                        <p></p>
+                    </blockquote>
+                    <figcaption class="blockquote-footer">
+                    <cite class="text-danger">*</cite> Harap anda membawa bukti ini pada saat berkunjung.
+                    </figcaption>
+                </figure>
+
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><b>No. Registrasi</b> : <%= @reservasi.ID %></li>
+                <li class="list-group-item"><b>Nama</b> : <%= @reservasi.NAMA %></li>
+                <li class="list-group-item"><b>Tempat/Tanggal Lahir</b> : <%= @reservasi.TEMPAT_LAHIR %>, 22 November 1997</li>
+                <li class="list-group-item"><b>Poli </b>: <%= referensi_ruangan(@reservasi.POLI).DESKRIPSI %></li>
+                <li class="list-group-item"><b>Dokter </b>: <%= @reservasi %></b></li>
+                <li class="list-group-item"><b>Tanggal Kunjungan : </b><%= @reservasi.TANGGALKUNJUNGAN%></li>
+            </ul>
+            <div class="card-body">
+                <%= link_to "Kembali", root_path, class: "btn btn-secondary", data: {turbo: false} %>
+            </div>
+        </div>
+    </div>
+
+
+</turbo-frame>

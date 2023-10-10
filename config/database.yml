@@ -10,8 +10,35 @@ default: &default
   timeout: 5000
 
 development:
-  <<: *default
-  database: db/development.sqlite3
+  primary:
+    <<: *default
+    database: db/development.sqlite3
+
+  regonline:
+    adapter: mysql2
+    host: 10.10.9.9
+    database: regonline
+    username: admin
+    password: R$Am180N
+
+  master:
+    adapter: mysql2
+    host: 10.10.9.9
+    database: master
+    username: admin
+    password: R$Am180N
+
+  penjamin_rs:
+    adapter: mysql2
+    host: 10.10.9.9
+    database: penjamin_rs
+    username: admin
+    password: R$Am180N
+
+  
+
+  
+
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".

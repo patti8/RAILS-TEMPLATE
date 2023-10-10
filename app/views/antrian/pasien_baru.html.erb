@@ -1,0 +1,38 @@
+<turbo-frame id="jenis_frame">
+
+  <div class="container mt-5 mb-5">
+
+      <%= render "/components/steps" %>
+
+      <div class="mx-auto" style="width: 75%;">
+      
+          <%= form_with(url: "/check_step_one", method: :post) do |d| %>
+
+              <%= d.hidden_field :norm, value: 0 %>
+              <div class="mb-3">
+                  <label class="form-label">Nama Pasien <small class="text-danger">*</small></label>
+                  <%= d.text_field :nama, class: "form-control", placeholder: "Masukan Nama Lengkap", required: true %>
+              </div>
+
+              <div class="mb-3">
+                  <label class="form-label">Tempat Lahir <small class="text-danger">*</small></label>
+                  <%= d.text_field :tempat_lahir, class: "form-control", placeholder: "Masukan Tempat Lahir", required: true %>
+              </div>
+
+              <div class="mb-3">
+                  <label class="form-label">Tanggal Lahir <small class="text-danger">*</small></label>
+                  <%= d.date_field :tanggal_lahir, class: "form-control", required: true %>
+              </div>
+
+              <center>
+                  <%= d.submit "Berikutnya", class: "btn btn-secondary" %>
+              </center>
+          <% end %>
+          
+      </div>
+  
+  </div>
+  
+  
+
+</div>

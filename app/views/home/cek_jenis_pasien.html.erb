@@ -1,0 +1,26 @@
+
+
+
+<turbo-frame id="home_frame">
+    <turbo-frame id="cetak_frame">
+        <header class="p-3 bg-1 text-dark shadow">
+            <div class="container">
+                <div class="flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-light text-decoration-none">
+                    <%= image_tag("rsjl.png", width: 30, height: 25) %> &nbsp; <b>Registrasi Online</b>
+                </a>
+                </div>
+            </div>
+        </header>
+
+        <div class="container text-center mt-5 mb-5">
+            <%= link_to "Pasien Lama", antrian_index_path, data: { turbo_frame: "jenis_frame" }, class: "btn btn-primary" %>
+                |
+            <%= link_to "Pasien Baru", pasien_baru_antrian_index_path, data: { turbo_frame: "jenis_frame" },  class: "btn btn-secondary" %>
+        </div>
+        <turbo-frame id="jenis_frame">
+        </turbo-frame>
+
+    </turbo-frame>
+</turbo-frame>
+
