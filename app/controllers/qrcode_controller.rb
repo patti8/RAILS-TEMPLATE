@@ -18,16 +18,18 @@ class QrcodeController < ApplicationController
             @qr_code_params = params[:qr_code_json_data].present? ? JSON.parse(params[:qr_code_json_data]).with_indifferent_access : nil
             data = @qr_code_params.present? ? @qr_code_params["qrdata"] : JSON.parse(params[:id_reg_json_data]).present? ? JSON.parse(params[:id_reg_json_data]) : 0
             
-            @reservasi = Regonline::Reservasi.find_by(ID: data) || Regonline::Reservasi.find_by(ID: data)
-            @task_action_antrian = Regonline::TaskActionAntrian.find_by(ANTRIAN: @reservasi.present? ? @reservasi.ID : 0 , TASK_ID: 1)
+            @reservasi = Regonline::Reservasi.find_by(ID: data) # || Regonline::Reservasi.find_by(ID: data)
+            # @task_action_antrian = Regonline::TaskActionAntrian.find_by(ANTRIAN: @reservasi.present? ? @reservasi.ID : 0 , TASK_ID: 1)
             
-            if @reservasi.present? && @task_action_antrian.present?
+            
+            if @reservasi.present? #&& @task_action_antrian.present?
                 tanggal = Time.now
                 
                 if @reservasi.TANGGALKUNJUNGAN.strftime("%Y-%m-%d") == tanggal.strftime("%Y-%m-%d")
                     jam= Time.now.strftime("%H").to_i + 9
-                    @reservasi.update(CHECKIN_STATUS: 88, WAKTU_CHECK_IN: tanggal.strftime("%Y-%m-%d #{jam}:%M:%S"))
-                    @task_action_antrian.update(TANGGAL: tanggal.strftime("%Y-%m-%d #{jam}:%M:%S"))
+                    # debugger
+                    @reservasi.update(WAKTU_CHECK_IN: tanggal.strftime("%Y-%m-%d #{jam}:%M:%S"))
+                    # @task_action_antrian.update(TANGGAL: tanggal.strftime("%Y-%m-%d #{jam}:%M:%S"))
                    
                     render :json => "checkin success. 💪", status: 200
                 else

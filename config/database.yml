@@ -3,11 +3,38 @@
 #
 #   Ensure the SQLite 3 gem is defined in your Gemfile
 #   gem 'sqlite3'
-#
+# rails s -b "ssl://localhost:3000?key=config/ssl/localhost.key&cert=config/ssl/localhost.crt" -e development
+
 default: &default
   adapter: sqlite3
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
+
+# development:
+#   primary:
+#     <<: *default
+#     database: db/development.sqlite3
+
+#   regonline:
+#     adapter: mysql2
+#     host: 10.10.9.9
+#     database: regonline
+#     username: admin
+#     password: R$Am180N
+
+#   master:
+#     adapter: mysql2
+#     host: 10.10.9.9
+#     database: master
+#     username: admin
+#     password: R$Am180N
+
+#   penjamin_rs:
+#     adapter: mysql2
+#     host: 10.10.9.9
+#     database: penjamin_rs
+#     username: admin
+#     password: R$Am180N
 
 development:
   primary:
@@ -16,25 +43,24 @@ development:
 
   regonline:
     adapter: mysql2
-    host: 10.10.9.9
+    host: 10.10.9.4
     database: regonline
     username: admin
-    password: R$Am180N
+    password: L3!men4m180N
 
   master:
     adapter: mysql2
-    host: 10.10.9.9
+    host: 10.10.9.4
     database: master
     username: admin
-    password: R$Am180N
+    password: L3!men4m180N
 
   penjamin_rs:
     adapter: mysql2
-    host: 10.10.9.9
+    host: 10.10.9.4
     database: penjamin_rs
     username: admin
-    password: R$Am180N
-
+    password: L3!men4m180N
   
 
   
@@ -48,5 +74,27 @@ test:
   database: db/test.sqlite3
 
 production:
-  <<: *default
-  database: db/production.sqlite3
+  primary:
+    <<: *default
+    database: db/development.sqlite3
+
+  regonline:
+    adapter: mysql2
+    host: 10.10.9.4
+    database: regonline
+    username: admin
+    password: L3!men4m180N
+
+  master:
+    adapter: mysql2
+    host: 10.10.9.4
+    database: master
+    username: admin
+    password: L3!men4m180N
+
+  penjamin_rs:
+    adapter: mysql2
+    host: 10.10.9.4
+    database: penjamin_rs
+    username: admin
+    password: L3!men4m180N
